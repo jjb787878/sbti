@@ -887,8 +887,8 @@
     <div class="gzh-modal-box">
       <h3>关注公众号获取结果</h3>
       <img src="./image/qrcode.jpg" alt="公众号二维码">
-      <p>长按识别二维码<br>关注后在对话框发送 <strong>测试结果</strong><br>即可获取您的专属人格分析</p>
-      <button id="closeGzhBtn" class="btn-primary" style="width:100%;">我已关注，继续查看结果</button>
+      <p>长按识别二维码关注公众号<br>在对话框发送 <strong>"测试结果"</strong><br>即可获取您的专属人格分析链接</p>
+      <button id="closeGzhBtn" class="btn-primary" style="width:100%;">我知道了</button>
     </div>
   </div>
   
@@ -1856,11 +1856,10 @@
       gzhModal.classList.add('active');
     });
     
-    // 关闭公众号弹窗 - 显示结果
+    // 关闭公众号弹窗 - 只关闭，不显示结果
     document.getElementById('closeGzhBtn').addEventListener('click', () => {
       const gzhModal = document.getElementById('gzhModal');
       gzhModal.classList.remove('active');
-      renderResult();
     });
     
     // 重新测试 - 清除 URL 参数
@@ -1874,8 +1873,6 @@
     window.addEventListener('load', () => {
       const urlParams = new URLSearchParams(window.location.search);
       if (urlParams.get('suc') === '1') {
-        const gzhModal = document.getElementById('gzhModal');
-        gzhModal.classList.remove('active');
         renderResult();
       }
     });
