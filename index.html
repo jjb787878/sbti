@@ -1737,5 +1737,24 @@
     document.getElementById('toTopBtn').addEventListener('click', () => showScreen('intro'));
   </script>
 
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d44d4fe6b56c4b46892c3f789d8ac0c5"}'></script><!-- Cloudflare Pages Analytics --></body>
+<!-- 访问统计追踪代码 -->
+<script>
+(function() {
+    var payload = {
+        url: window.location.href,
+        referrer: document.referrer,
+        title: document.title,
+        system_name: 'SBTI测试', // 请修改为您的系统标识
+        timestamp: new Date().getTime()
+    };
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'stat.yyds62.cn/tracker.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify(payload));
+})();
+</script>
+<noscript><img src="stat.yyds62.cn/tracker.php?url=${encodeURIComponent(window.location.href)}&ref=${encodeURIComponent(document.referrer)}&title=${encodeURIComponent(document.title)}&system_name=您的系统名称" height="1" width="1" style="display:none" /></noscript>
+<!-- End 访问统计追踪代码 -->
+</body>
 </html>
