@@ -151,116 +151,6 @@
     button:hover { transform: translateY(-1px); }
     button:disabled { cursor: not-allowed; opacity: 0.55; transform: none; }
 
-    /* 支付弹窗样式 */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
-    }
-    .modal-overlay.active {
-      display: flex;
-    }
-    .modal-box {
-      background: #fff;
-      border-radius: 18px;
-      padding: 32px;
-      max-width: 400px;
-      width: 90%;
-      text-align: center;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-    }
-    .modal-box h3 {
-      margin: 0 0 16px;
-      color: var(--text);
-      font-size: 20px;
-    }
-    .modal-box .price {
-      font-size: 36px;
-      font-weight: 800;
-      color: var(--accent-strong);
-      margin: 16px 0;
-    }
-    .modal-box .desc {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 24px;
-      line-height: 1.6;
-    }
-    .modal-box .btn-group {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-    }
-    .modal-box .btn-group button {
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 15px;
-    }
-    .modal-box .btn-pay {
-      background: var(--accent-strong);
-      color: #fff;
-    }
-    .modal-box .btn-cancel {
-      background: #f0f0f0;
-      color: var(--text);
-    }
-    .modal-box .btn-pay:hover {
-      background: #3d5a43;
-    }
-    .modal-box .btn-cancel:hover {
-      background: #e0e0e0;
-    }
-    
-    /* 公众号弹窗样式 */
-    .gzh-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-    .gzh-modal.active {
-      display: flex;
-    }
-    .gzh-modal-box {
-      background: #fff;
-      border-radius: 16px;
-      padding: 24px;
-      max-width: 340px;
-      width: 90%;
-      text-align: center;
-    }
-    .gzh-modal-box h3 {
-      margin: 0 0 16px;
-      font-size: 18px;
-      color: #333;
-    }
-    .gzh-modal-box p {
-      margin: 0 0 16px;
-      color: #666;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-    .gzh-modal-box img {
-      width: 200px;
-      height: 200px;
-      border-radius: 8px;
-      margin-bottom: 16px;
-    }
-
     .btn-primary {
       background: var(--accent-strong);
       color: #fff;
@@ -791,6 +681,42 @@
       .dim-grid,
       .score-grid { grid-template-columns: 1fr; }
     }
+    .poster-support-qr {
+        right: 14px;
+        bottom: 14px;
+        width: 82px;
+        padding: 7px;
+      }
+      .poster-qr-label {
+        font-size: 10px;
+      }
+
+      .poster-support-qr {
+      position: absolute;
+      right: 2px;
+      bottom: 4px;
+      z-index: 2;
+      width: 72px;
+      
+      border: 1px solid rgba(219, 232, 221, 0.95);
+      border-radius: 10px;
+      color: var(--accent-strong);
+      text-align: center;
+      text-decoration: none;
+    }
+    .poster-support-qr img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 6px;
+    }
+    .poster-qr-label {
+      display: block;
+      margin-top: 5px;
+      font-size: 11px;
+      line-height: 1.2;
+      font-weight: 800;
+    }
   </style>
 </head>
 <body>
@@ -802,7 +728,6 @@
           <button id="startBtn" class="btn-primary">开始测试</button>
         </div>
         <div style="padding-top: 2rem; display: flex; flex-direction: column;">
-
           <span>
           </span>
         </div>
@@ -836,6 +761,10 @@
             <div class="poster-box" id="posterBox">
               <img id="posterImage" class="poster-image" alt="人格结果图" />
               <div id="posterCaption" class="poster-caption">怎么样，被我拿捏了吧？</div>
+               <a class="poster-support-qr" href="https://jjb787878.github.io/sbti" target="_blank" rel="noopener noreferrer" aria-label="扫码打开 SBTI 测试">
+                <img id="posterSupportQrImage" src="https://quickchart.io/qr?text=https%3A%2F%2Fjjb787878.github.io%2Fsbti&size=180&margin=1&format=png" alt="" loading="lazy" />
+                <span class="poster-qr-label">扫码测试</span>
+              </a>
             </div>
 
             <div class="type-box">
@@ -882,16 +811,7 @@
     </section>
 
   </div>
-  
-  <!-- 公众号弹窗 -->
-  <div id="gzhModal" class="gzh-modal">
-    <div class="gzh-modal-box">
-      <h3>关注公众号获取结果</h3>
-      <img src="./image/qrcode.jpg" alt="公众号二维码">
-      <p>长按识别二维码关注公众号<br>在对话框发送 <strong>"测试结果"</strong><br>系统将自动回复链接，点击即可查看结果</p>
-      <button id="closeGzhBtn" class="btn-primary" style="width:100%;">我知道了</button>
-    </div>
-  </div>
+
   
   <script>
     const dimensionMeta = {
@@ -1850,85 +1770,10 @@
 
     document.getElementById('startBtn').addEventListener('click', () => startTest(false));
     document.getElementById('backIntroBtn').addEventListener('click', () => showScreen('intro'));
-    
-    // 保存测试结果到 localStorage
-    function saveResult() {
-      const result = computeResult();
-      localStorage.setItem('sbti_result', JSON.stringify(result));
-    }
-
-    // 清除缓存的结果
-    function clearResult() {
-      localStorage.removeItem('sbti_result');
-    }
-
-    // 提交测试 - 保存结果到缓存，显示公众号弹窗
-    document.getElementById('submitBtn').addEventListener('click', () => {
-      saveResult();
-      const gzhModal = document.getElementById('gzhModal');
-      gzhModal.classList.add('active');
-    });
-    
-    // 关闭公众号弹窗 - 只关闭，不显示结果
-    document.getElementById('closeGzhBtn').addEventListener('click', () => {
-      const gzhModal = document.getElementById('gzhModal');
-      gzhModal.classList.remove('active');
-    });
-    
-    // 重新测试 - 清除 URL 参数和缓存，重新开始
-    document.getElementById('restartBtn').addEventListener('click', () => {
-      clearResult();
-      window.history.replaceState({}, document.title, window.location.pathname);
-      startTest(false);
-    });
+    document.getElementById('submitBtn').addEventListener('click', renderResult);
+    document.getElementById('restartBtn').addEventListener('click', () => startTest(false));
     document.getElementById('toTopBtn').addEventListener('click', () => showScreen('intro'));
-    
-    // 检测 ?suc=1 参数，有缓存就显示结果
-    window.addEventListener('load', () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('suc') === '1') {
-        const savedResult = localStorage.getItem('sbti_result');
-        if (!savedResult) {
-          alert('请先完成测试才能查看结果');
-          window.history.replaceState({}, document.title, window.location.pathname);
-          return;
-        }
-        renderStoredResult(JSON.parse(savedResult));
-      }
-    });
-
-    // 渲染保存的结果（从localStorage恢复）
-    function renderStoredResult(result) {
-      const type = result.finalType;
-
-      document.getElementById('resultModeKicker').textContent = result.modeKicker;
-      document.getElementById('resultTypeName').textContent = `${type.code}（${type.cn}）`;
-      document.getElementById('matchBadge').textContent = result.badge;
-      document.getElementById('resultTypeSub').textContent = result.sub;
-      document.getElementById('resultDesc').textContent = type.desc;
-      document.getElementById('posterCaption').textContent = type.intro;
-      document.getElementById('funNote').textContent = result.special
-        ? '本测试仅供娱乐。隐藏人格和傻乐兜底都属于作者故意埋的损招，请勿把它当成医学、心理学、相学、命理学或灵异学依据。'
-        : '本测试仅供娱乐，别拿它当诊断、面试、相亲、分手、招魂、算命或人生判决书。你可以笑，但别太当真。';
-
-      const posterBox = document.getElementById('posterBox');
-      const posterImage = document.getElementById('posterImage');
-      const imageSrc = TYPE_IMAGES[type.code];
-      if (imageSrc) {
-        posterImage.src = imageSrc;
-        posterImage.alt = `${type.code}（${type.cn}）`;
-        posterBox.classList.remove('no-image');
-      } else {
-        posterImage.removeAttribute('src');
-        posterImage.alt = '';
-        posterBox.classList.add('no-image');
-      }
-
-      renderDimList(result);
-      showScreen('result');
-    }
   </script>
-
 <!-- 访问统计追踪代码 -->
 <script>
 (function() {
