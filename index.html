@@ -681,42 +681,6 @@
       .dim-grid,
       .score-grid { grid-template-columns: 1fr; }
     }
-    .poster-support-qr {
-        right: 14px;
-        bottom: 14px;
-        width: 82px;
-        padding: 7px;
-      }
-      .poster-qr-label {
-        font-size: 10px;
-      }
-
-      .poster-support-qr {
-      position: absolute;
-      right: 2px;
-      bottom: 4px;
-      z-index: 2;
-      width: 72px;
-      
-      border: 1px solid rgba(219, 232, 221, 0.95);
-      border-radius: 10px;
-      color: var(--accent-strong);
-      text-align: center;
-      text-decoration: none;
-    }
-    .poster-support-qr img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 1;
-      border-radius: 6px;
-    }
-    .poster-qr-label {
-      display: block;
-      margin-top: 5px;
-      font-size: 11px;
-      line-height: 1.2;
-      font-weight: 800;
-    }
   </style>
 </head>
 <body>
@@ -761,10 +725,6 @@
             <div class="poster-box" id="posterBox">
               <img id="posterImage" class="poster-image" alt="人格结果图" />
               <div id="posterCaption" class="poster-caption">怎么样，被我拿捏了吧？</div>
-               <a class="poster-support-qr" href="https://jjb787878.github.io/sbti" target="_blank" rel="noopener noreferrer" aria-label="扫码打开 SBTI 测试">
-                <img id="posterSupportQrImage" src="https://quickchart.io/qr?text=https%3A%2F%2Fjjb787878.github.io%2Fsbti&size=180&margin=1&format=png" alt="" loading="lazy" />
-                <span class="poster-qr-label">扫码测试</span>
-              </a>
             </div>
 
             <div class="type-box">
